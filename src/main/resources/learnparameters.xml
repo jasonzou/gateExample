@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Settings>
+  <Setting ID="tripleComboBox" Value="Company  hasSales  string"/>
+  <Setting ID="initializerComboBox" Value="0"/>
+  <Setting ID="rulegroupComboBox" Value="0"/>
+  <Setting ID="populationSizeTextField" Value="100"/>
+  <Setting ID="nodeDepthTextField" Value="3"/>
+  <Setting ID="maxChildrenTextField" Value="7"/>
+  <Setting ID="selectionComboBox" Value="2"/>
+  <Setting ID="tournamentSizeTextField" Value="0.25"/>
+  <Setting ID="crossOverComboBox" Value="0"/>
+  <Setting ID="mutationRateTextField" Value="0.3"/>
+  <Setting ID="elitismRateTextField" Value="0.05"/>
+  <Setting ID="betaTextField" Value="0.3"/>
+  <Setting ID="assemblySizeTextField" Value="10"/>
+  <Setting ID="minPrecisionTextField" Value="0.5"/>
+  <Setting ID="maximumGenerationsTextField" Value="50"/>
+</Settings>

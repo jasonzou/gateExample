@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RuleSet>
+  <!-- p=0.667 r=0.508, f=0.577 -->
+  <RuleGroup Name="hasCompetitor">
+    <Rule Description="" Name="Rule 1">($subject, kb:hasCompetitor, $object) :-  $subject:Company (!Compete)* Compete $object:Company</Rule>
+    <Rule Description="" Name="Rule 2">($subject, kb:hasCompetitor, $object) :-  Competitor (!DT)+ $subject:Company CC $object:Company</Rule>
+    <Rule Description="" Name="Rule 3">($subject, kb:hasCompetitor, $object) :-  GlobalTerm !Make $subject:Company lowerCase $object:Concept (VBZ)* Modifier</Rule>
+    <Rule Description="" Name="Rule 4">($subject, kb:hasCompetitor, $object) :-  $subject:NNP (!NNP)+ Compete lowerCase $object:Thing</Rule>
+    <Rule Description="" Name="Rule 5">($subject, kb:hasCompetitor, $object) :-  $subject:Company (!Company)* Competitor !allCaps (lowerCase)* $object:Company</Rule>
+    <Rule Description="" Name="Rule 6">($subject, kb:hasCompetitor, $object) :-  $subject:NasdaqCompany (lowerCase)* $object:NasdaqCompany !Modifier (NasdaqCompany | NN | Modifier)</Rule>
+    <Rule Description="" Name="Rule 7">($subject, kb:hasCompetitor, $object) :-  $object:upperInitial ModifierUp NNS IN $subject:upperInitial</Rule>
+    <Rule Description="" Name="Rule 8">($subject, kb:hasCompetitor, $object) :-  $subject:upperInitial GlobalTerm ListIndicator $object:Company</Rule>
+    <Rule Description="" Name="Rule 9">($subject, kb:hasCompetitor, $object) :-  $subject:NNP CC $object:Concept Recently (!Become)+ CC</Rule>
+  </RuleGroup>
+  <!-- p=0.905, r=0.613, f=0.731 -->
+  <RuleGroup Name="hasLoss">
+    <Rule Description="" Name="Rule 1">($subject, kb:hasLoss, $object) :-  $subject:Thing lowerCase upperInitial CD lowerCase TO $object:Thing</Rule>
+    <Rule Description="" Name="Rule 2">($subject, kb:hasLoss, $object) :-  $subject:Thing Term Term lowerCase TO $object:Term</Rule>
+    <Rule Description="" Name="Rule 3">($subject, kb:hasLoss, $object) :-  $subject:Company lowerCase $object:Thing CD Modifier</Rule>
+    <Rule Description="" Name="Rule 4">($subject, kb:hasLoss, $object) :-  $subject:Concept VBD (!JJ)* VBD $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 5">($subject, kb:hasLoss, $object) :-  $subject:Company (!Subsidiary)+ Loss IN $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 6">($subject, kb:hasLoss, $object) :-  $subject:NasdaqCompany Modifier IN $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 7">($subject, kb:hasLoss, $object) :-  $subject:Concept (lowerCase)? Thing $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 8">($subject, kb:hasLoss, $object) :-  $subject:Company (!PRP)+ Lose $object:ExactValue</Rule>
+  </RuleGroup>
+  <!-- p=0.808, r=0.356, f=0.494 -->
+  <RuleGroup Name="hasPartner">
+    <Rule Description="" Name="Rule 1">($subject, kb:hasPartner, $object) :-  $subject:NasdaqCompany (lowerCase)* lowerCase $object:upperInitial ModifierPast</Rule>
+    <Rule Description="" Name="Rule 2">($subject, kb:hasPartner, $object) :-  $subject:NNP (lowerCase)+ $object:NNP Subsidiary</Rule>
+    <Rule Description="" Name="Rule 3">($subject, kb:hasPartner, $object) :-  $subject:upperInitial Buy (ModifierGood)? $object:Company</Rule>
+    <Rule Description="" Name="Rule 4">($subject, kb:hasPartner, $object) :-  $subject:NNP POS Term lowerCase lowerCase $object:NNP</Rule>
+    <Rule Description="" Name="Rule 5">($subject, kb:hasPartner, $object) :-  $subject:Concept !POS $object:Concept (!POS | (allCaps)*) Collaborate</Rule>
+    <Rule Description="" Name="Rule 6">($subject, kb:hasPartner, $object) :-  $subject:Company Collaborate lowerCase $object:Concept</Rule>
+    <Rule Description="" Name="Rule 7">($subject, kb:hasPartner, $object) :-  $subject:Company apostrophe (America)* Partner $object:Company</Rule>
+    <Rule Description="" Name="Rule 8">($subject, kb:hasPartner, $object) :-  $object:Company (!Asia | (Second)?) GlobalTerm $subject:Company !lowerCase</Rule>
+    <Rule Description="" Name="Rule 9">($subject, kb:hasPartner, $object) :-  IN $subject:NasdaqCompany (!CD)+ GlobalTerm IN $object:upperInitial</Rule>
+    <Rule Description="" Name="Rule 10">($subject, kb:hasPartner, $object) :-  $subject:NasdaqCompany VBZ TO VB $object:Company</Rule>
+  </RuleGroup>
+  <!-- p=0.698, r=0.309, f=0.429 -->
+  <RuleGroup Name="hasSubsidiary">
+    <Rule Description="" Name="Rule 1">($subject, kb:hasSubsidiary, $object) :-  $object:Concept Term TO $subject:Concept</Rule>
+    <Rule Description="" Name="Rule 2">($subject, kb:hasSubsidiary, $object) :-  $object:Concept !RBS WDT $subject:Bank</Rule>
+    <Rule Description="" Name="Rule 3">($subject, kb:hasSubsidiary, $object) :-  $subject:Company $object:Company (NN)* VBD</Rule>
+    <Rule Description="" Name="Rule 4">($subject, kb:hasSubsidiary, $object) :-  $object:Concept lowerCase $subject:Thing Thing Concept Punctuation</Rule>
+    <Rule Description="" Name="Rule 5">($subject, kb:hasSubsidiary, $object) :-  $subject:Company (!Company)+ Buy $object:Company</Rule>
+    <Rule Description="" Name="Rule 6">($subject, kb:hasSubsidiary, $object) :-  $subject:Company (Buy &amp; (Help)?) (!VBG)* $object:Company !VBZ</Rule>
+    <Rule Description="" Name="Rule 7">($subject, kb:hasSubsidiary, $object) :-  $subject:upperInitial Thing PRP lowerCase Timespan (!ModifierPast)+ $object:Thing</Rule>
+    <Rule Description="" Name="Rule 8">($subject, kb:hasSubsidiary, $object) :-  ModifierNew !Product !Add $subject:Bank $object:Company</Rule>
+    <Rule Description="" Name="Rule 9">($subject, kb:hasSubsidiary, $object) :-  $subject:Company VBZ (NasdaqCompany)* $object:Company</Rule>
+    <Rule Description="" Name="Rule 10">($subject, kb:hasSubsidiary, $object) :-  $object:Concept !Concept lowerCase $subject:Concept apostrophe lowerCase Role</Rule>
+  </RuleGroup>
+  <!-- p=0.904, r=0.904, f=0.904 -->
+  <RuleGroup Name="hasCEO">
+    <Rule Description="" Name="Rule 1">($subject, kb:hasCEO, $object) :-  (Bank)? $subject:Company (!VBD)* Modifier (!(Role | CD | Sales))* $object:Person</Rule>
+    <Rule Description="" Name="Rule 2">($subject, kb:hasCEO, $object) :-  $object:BusinessLeader !Programming !Internet $subject:Concept Role</Rule>
+    <Rule Description="" Name="Rule 3">($subject, kb:hasCEO, $object) :-  IN $subject:Company !NNP ((NNP)? &amp; Announce) $object:Person</Rule>
+    <Rule Description="" Name="Rule 4">($subject, kb:hasCEO, $object) :-  ((Apostrophe | Former))* $subject:Thing CEO $object:Person</Rule>
+    <Rule Description="" Name="Rule 5">($subject, kb:hasCEO, $object) :-  $subject:Company (!VBP)+ lowerCase CEO $object:Concept</Rule>
+    <Rule Description="" Name="Rule 6">($subject, kb:hasCEO, $object) :-  $subject:Company Thing ((Partner | CC | Verb | Modifier | ListIndicator))* Thing $object:Concept !Thing</Rule>
+    <Rule Description="" Name="Rule 7">($subject, kb:hasCEO, $object) :-  $subject:Concept CEO !Good $object:BusinessLeader</Rule>
+    <Rule Description="" Name="Rule 8">($subject, kb:hasCEO, $object) :-  $subject:Company (!Company)* CEO (!RBR)+ $object:Person</Rule>
+    <Rule Description="" Name="Rule 9">($subject, kb:hasCEO, $object) :-  $object:Person (!BusinessLeader)* CEO (lowerCase)* $subject:Company</Rule>
+  </RuleGroup>
+  <!-- p=0.821, r=0.793, f=0.807 -->
+  <RuleGroup Name="hasPresident">
+    <Rule Description="" Name="Rule 1">($subject, kb:hasPresident, $object) :-  $object:Thing !Is lowerCase President lowerCase $subject:Company</Rule>
+    <Rule Description="" Name="Rule 2">($subject, kb:hasPresident, $object) :-  $object:Concept !JJR President IN (lowerCase)? $subject:Concept</Rule>
+    <Rule Description="" Name="Rule 3">($subject, kb:hasPresident, $object) :-  $subject:Thing NNP $object:Person lowerCase mixedCaps</Rule>
+    <Rule Description="" Name="Rule 4">($subject, kb:hasPresident, $object) :-  !ChiefSpokesman $subject:Thing VBZ President !Is $object:Thing</Rule>
+    <Rule Description="" Name="Rule 5">($subject, kb:hasPresident, $object) :-  Role (lowerCase)* $subject:Thing !Slip $object:Person</Rule>
+    <Rule Description="" Name="Rule 6">($subject, kb:hasPresident, $object) :-  VBZ $object:Person _ $subject:NNP</Rule>
+    <Rule Description="" Name="Rule 7">($subject, kb:hasPresident, $object) :-  $subject:Bank Thing $object:Person</Rule>
+    <Rule Description="" Name="Rule 8">($subject, kb:hasPresident, $object) :-  $object:Concept !High $subject:upperInitial VBZ President</Rule>
+  </RuleGroup>
+  <!-- p=0.788, r=0.793, f=0.791 -->
+  <RuleGroup Name="hasProduct">
+    <Rule Description="" Name="Rule 1">($subject, kb:hasProduct, $object) :-  (Region)* $subject:Concept (VBZ | POS | ((TO | Term))*) $object:Product</Rule>
+    <Rule Description="" Name="Rule 2">($subject, kb:hasProduct, $object) :-  $object:Product !Late $subject:NasdaqCompany (!(ExactValue | IN | Product))+ IN !CD</Rule>
+    <Rule Description="" Name="Rule 3">($subject, kb:hasProduct, $object) :-  IN $subject:Company apostrophe $object:Company</Rule>
+    <Rule Description="" Name="Rule 4">($subject, kb:hasProduct, $object) :-  $subject:Concept Product !NN (!JJ)+ !Concept $object:Product</Rule>
+    <Rule Description="" Name="Rule 5">($subject, kb:hasProduct, $object) :-  $subject:Company (!(Company | CC | mixedCaps))* !(Company | IN) $object:Product (!(IN | VBD))*</Rule>
+    <Rule Description="" Name="Rule 6">($subject, kb:hasProduct, $object) :-  $object:mixedCaps NN $subject:Company</Rule>
+    <Rule Description="" Name="Rule 7">($subject, kb:hasProduct, $object) :-  $subject:NasdaqCompany lowerCase (NasdaqCompany | DT) $object:Concept</Rule>
+    <Rule Description="" Name="Rule 8">($subject, kb:hasProduct, $object) :-  !lowerCase $object:Company !lowerCase !Report $subject:NasdaqCompany</Rule>
+    <Rule Description="" Name="Rule 9">($subject, kb:hasProduct, $object) :-  NN lowerCase Thing $subject:Company apostrophe $object:mixedCaps</Rule>
+    <Rule Description="" Name="Rule 10">($subject, kb:hasProduct, $object) :-  $object:Concept _ $subject:NasdaqCompany Apostrophe JJ</Rule>
+  </RuleGroup>
+  <!-- p=0.960, r=0.522, f=0.676 -->
+  <RuleGroup Name="hasProfit">
+    <Rule Description="" Name="Rule 1">($subject, kb:hasProfit, $object) :-  $subject:Bank Term (!ModifierEnd)+ Fall ((!Version)+ | ExactValue) $object:Term</Rule>
+    <Rule Description="" Name="Rule 2">($subject, kb:hasProfit, $object) :-  $subject:Thing Profit $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 3">($subject, kb:hasProfit, $object) :-  $subject:Concept (!VBD)* !TO (JJS | Verb) $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 4">($subject, kb:hasProfit, $object) :-  $subject:Concept (lowerCase)* ModifierGood (!(Concept | Help))+ $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 5">($subject, kb:hasProfit, $object) :-  $subject:NNP (lowerCase)+ ExactValue !New $object:ExactValue</Rule>
+  </RuleGroup>
+  <!-- p=0.900, r=0.450, f=0.600 -->
+  <RuleGroup Name="hasSales">
+    <Rule Description="" Name="Rule 1">($subject, kb:hasSales, $object) :-  $subject:NNP (lowerCase)* Sales (!Bad)+ $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 2">($subject, kb:hasSales, $object) :-  !lowerCase $subject:Company !FinancialTerm $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 3">($subject, kb:hasSales, $object) :-  $subject:Company (!ExactValue)+ JJ (!ExactValue)+ CC $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 4">($subject, kb:hasSales, $object) :-  $subject:Company Term (!Unchanged)+ Sales IN $object:Term</Rule>
+  </RuleGroup>
+  <!-- p=0.939, r=0.805, f=0.867 -->
+  <RuleGroup Name="hasShareValue">
+    <Rule Description="" Name="Rule 1">($subject, kb:hasShareValue, $object) :-  IN $subject:Thing Thing Thing IN $object:Term</Rule>
+    <Rule Description="" Name="Rule 2">($subject, kb:hasShareValue, $object) :-  $subject:Concept (!(Up | Timespan | VBZ))* Up (!VBZ)* $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 3">($subject, kb:hasShareValue, $object) :-  $subject:Thing Shares Term IN Thing !Yesterday $object:Term</Rule>
+    <Rule Description="" Name="Rule 4">($subject, kb:hasShareValue, $object) :-  $subject:Concept (!PRPR$)* (Low | High) IN $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 5">($subject, kb:hasShareValue, $object) :-  $subject:Company (!(((((Up | Lose | PRP$ | Sales))+ | apostrophe | Scale | Tumble))* | ((JJ | VBZ | ((Sell | ModifierGood | JJR | PRP))*))*))* (IN | TO) $object:ExactValue</Rule>
+    <Rule Description="" Name="Rule 6">($subject, kb:hasShareValue, $object) :-  $subject:Thing Term Thing ModifierUp $object:Term</Rule>
+    <Rule Description="" Name="Rule 7">($subject, kb:hasShareValue, $object) :-  $subject:Company Apostrophe (!ModifierAfter)* Close (lowerCase)* $object:Term</Rule>
+  </RuleGroup>
+</RuleSet>

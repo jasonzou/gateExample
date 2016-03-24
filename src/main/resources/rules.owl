@@ -1,0 +1,712 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:rb="http://www.hermes.com/rules.owl#"
+    xmlns:kb="http://www.hermes.com/knowledgebase.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:news="http://www.hermes.com/news.owl#">
+  <owl:Ontology rdf:about="http://www.hermes.com/rules.owl">
+    <owl:imports rdf:resource="http://www.hermes.com/news.owl"/>
+    <owl:imports rdf:resource="http://www.hermes.com/knowledgebase.owl"/>
+  </owl:Ontology>
+  <rdfs:Class rdf:about="http://www.hermes.com/news.owl#News"/>
+  <owl:Class rdf:about="http://www.hermes.com/rules.owl#newFoundIndividual"/>
+  <owl:Class rdf:about="http://www.hermes.com/rules.owl#Action">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#mainClause"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.hermes.com/rules.owl#actionType"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.hermes.com/rules.owl#Event">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#matchedSubject"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#matchedObject"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#matchedNewsItem"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.hermes.com/rules.owl#Triple">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.hermes.com/rules.owl#object"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.hermes.com/rules.owl#predicate"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://www.hermes.com/rules.owl#subject"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.hermes.com/rules.owl#Rule">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#ruleSubject"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#ruleRelation"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#ruleObject"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#hasActions"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#mainClause">
+    <rdfs:range rdf:resource="http://www.hermes.com/rules.owl#Triple"/>
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Action"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#hasRule">
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Event"/>
+    <rdfs:range rdf:resource="http://www.hermes.com/rules.owl#Rule"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#hasEvents"/>
+    </owl:inverseOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#ruleRelation">
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Rule"/>
+    <rdfs:range rdf:resource="http://www.hermes.com/knowledgebase.owl#Relation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#hasActions">
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Rule"/>
+    <rdfs:range rdf:resource="http://www.hermes.com/rules.owl#Action"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#matchedObject">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.hermes.com/knowledgebase.owl#Concept"/>
+          <owl:Class rdf:about="http://www.hermes.com/rules.owl#newFoundIndividual"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Event"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#matchedSubject">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.hermes.com/knowledgebase.owl#Concept"/>
+          <owl:Class rdf:about="http://www.hermes.com/rules.owl#newFoundIndividual"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Event"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#whereClause">
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Action"/>
+    <rdfs:range rdf:resource="http://www.hermes.com/rules.owl#Triple"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#ruleObject">
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Rule"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.hermes.com/knowledgebase.owl#Concept"/>
+          <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#hasEvents">
+    <owl:inverseOf rdf:resource="http://www.hermes.com/rules.owl#hasRule"/>
+    <rdfs:range rdf:resource="http://www.hermes.com/rules.owl#Event"/>
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Rule"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#matchedNewsItem">
+    <rdfs:range rdf:resource="http://www.hermes.com/news.owl#News"/>
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Event"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.hermes.com/rules.owl#ruleSubject">
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Rule"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.hermes.com/knowledgebase.owl#Concept"/>
+          <rdf:Description rdf:about="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:about="http://www.hermes.com/knowledgebase.owl#synonym">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Property>
+  <owl:DatatypeProperty rdf:about="http://www.hermes.com/rules.owl#isValid">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Event"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.hermes.com/rules.owl#actionType">
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Action"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >delete</rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >add</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.hermes.com/rules.owl#object">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Triple"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.hermes.com/rules.owl#predicate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Triple"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.hermes.com/rules.owl#classURI">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#newFoundIndividual"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.hermes.com/rules.owl#subject">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.hermes.com/rules.owl#Triple"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <rb:Action rdf:about="http://www.hermes.com/rules.owl#addCEO">
+    <rb:mainClause>
+      <rb:Triple>
+        <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >&lt;event object&gt;</rb:object>
+        <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >http://www.hermes.com/knowledgebase.owl#isCeoOf</rb:predicate>
+        <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >&lt;event subject&gt;</rb:subject>
+      </rb:Triple>
+    </rb:mainClause>
+    <rb:actionType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >add</rb:actionType>
+  </rb:Action>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCeo</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCEO</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasManufacturedProduct</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?y</rb:object>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?y</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCEO</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasManufacturedProduct</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCeo</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCEO</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?y</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Rule rdf:about="http://www.hermes.com/rules.owl#test-rule">
+    <rb:ruleObject rdf:resource="http://www.hermes.com/knowledgebase.owl#World"/>
+    <rb:ruleRelation rdf:resource="http://www.hermes.com/knowledgebase.owl#TestRelation"/>
+    <rb:ruleSubject rdf:resource="http://www.hermes.com/knowledgebase.owl#Concept"/>
+  </rb:Rule>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#isCompetingProduct</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?y</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCEO</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCEO</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCeo</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:object>
+  </rb:Triple>
+  <rb:Rule rdf:about="http://www.hermes.com/rules.owl#bankrupt-rule">
+    <rb:hasActions>
+      <rb:Action rdf:about="http://www.hermes.com/rules.owl#addIsBankrupt">
+        <rb:mainClause>
+          <rb:Triple>
+            <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >?x</rb:object>
+            <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >http://www.hermes.com/knowledgebase.owl#isBankrupt</rb:predicate>
+            <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event subject&gt;</rb:subject>
+          </rb:Triple>
+        </rb:mainClause>
+        <rb:actionType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >add</rb:actionType>
+      </rb:Action>
+    </rb:hasActions>
+    <rb:ruleRelation rdf:resource="http://www.hermes.com/knowledgebase.owl#Bankrupt"/>
+    <rb:ruleSubject rdf:resource="http://www.hermes.com/knowledgebase.owl#Company"/>
+  </rb:Rule>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasProduct</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasProduct</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasProduct</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Rule rdf:about="http://www.hermes.com/rules.owl#CEO-rule">
+    <rb:ruleObject rdf:resource="http://www.hermes.com/knowledgebase.owl#Company"/>
+    <rb:ruleRelation>
+      <rdf:Description rdf:about="http://www.hermes.com/knowledgebase.owl#BecomesCEO">
+        <kb:synonym rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >becomes chief executive</kb:synonym>
+        <kb:synonym rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >becomes chief executive officer</kb:synonym>
+        <kb:synonym rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >appointed CEO</kb:synonym>
+        <kb:synonym rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >appointend chief executive</kb:synonym>
+        <kb:synonym rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >appointed chief executive officer</kb:synonym>
+      </rdf:Description>
+    </rb:ruleRelation>
+    <rb:ruleSubject rdf:resource="http://www.hermes.com/knowledgebase.owl#Person"/>
+  </rb:Rule>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasProduct</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCEO</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCEO</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:object>
+  </rb:Triple>
+  <rb:Rule rdf:about="http://www.hermes.com/rules.owl#partner-rule">
+    <rb:hasActions>
+      <rb:Action rdf:about="http://www.hermes.com/rules.owl#removeCompetesWith">
+        <rb:mainClause>
+          <rb:Triple>
+            <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event subject&gt;</rb:object>
+            <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+            <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event object&gt;</rb:subject>
+          </rb:Triple>
+        </rb:mainClause>
+        <rb:mainClause>
+          <rb:Triple>
+            <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event object&gt;</rb:object>
+            <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+            <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event subject&gt;</rb:subject>
+          </rb:Triple>
+        </rb:mainClause>
+        <rb:actionType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >delete</rb:actionType>
+      </rb:Action>
+    </rb:hasActions>
+    <rb:ruleSubject rdf:resource="http://www.hermes.com/knowledgebase.owl#Company"/>
+    <rb:ruleRelation rdf:resource="http://www.hermes.com/knowledgebase.owl#NewPartner"/>
+    <rb:ruleObject rdf:resource="http://www.hermes.com/knowledgebase.owl#Company"/>
+  </rb:Rule>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#isCompetingProduct</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?y</rb:subject>
+  </rb:Triple>
+  <rb:Rule rdf:about="http://www.hermes.com/rules.owl#resign-rule">
+    <rb:ruleObject rdf:resource="http://www.hermes.com/knowledgebase.owl#Company"/>
+    <rb:ruleRelation rdf:resource="http://www.hermes.com/knowledgebase.owl#resigns"/>
+    <rb:ruleSubject rdf:resource="http://www.hermes.com/knowledgebase.owl#Person"/>
+    <rb:hasActions>
+      <rb:Action rdf:about="http://www.hermes.com/rules.owl#removeCEO">
+        <rb:mainClause>
+          <rb:Triple>
+            <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >?x</rb:object>
+            <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >http://www.hermes.com/knowledgebase.owl#hasCEO</rb:predicate>
+            <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event subject&gt;</rb:subject>
+          </rb:Triple>
+        </rb:mainClause>
+        <rb:actionType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >delete</rb:actionType>
+      </rb:Action>
+    </rb:hasActions>
+  </rb:Rule>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCEO</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:object>
+  </rb:Triple>
+  <rb:Rule rdf:about="http://www.hermes.com/rules.owl#competitor-rule">
+    <rb:hasActions>
+      <rb:Action rdf:about="http://www.hermes.com/rules.owl#addCompetesWith">
+        <rb:mainClause>
+          <rb:Triple>
+            <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event subject&gt;</rb:object>
+            <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+            <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event object&gt;</rb:subject>
+          </rb:Triple>
+        </rb:mainClause>
+        <rb:mainClause>
+          <rb:Triple>
+            <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event object&gt;</rb:object>
+            <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+            <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event subject&gt;</rb:subject>
+          </rb:Triple>
+        </rb:mainClause>
+        <rb:actionType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >add</rb:actionType>
+      </rb:Action>
+    </rb:hasActions>
+    <rb:ruleRelation rdf:resource="http://www.hermes.com/knowledgebase.owl#NewCompetitor"/>
+    <rb:ruleSubject rdf:resource="http://www.hermes.com/knowledgebase.owl#Company"/>
+    <rb:ruleObject rdf:resource="http://www.hermes.com/knowledgebase.owl#Company"/>
+  </rb:Rule>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?x</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCEO</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >?y</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasProduct</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCeo</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:object>
+  </rb:Triple>
+  <rb:Rule rdf:about="http://www.hermes.com/rules.owl#product-rule">
+    <rb:ruleSubject rdf:resource="http://www.hermes.com/knowledgebase.owl#Company"/>
+    <rb:ruleRelation rdf:resource="http://www.hermes.com/knowledgebase.owl#NewProduct"/>
+    <rb:ruleObject rdf:resource="http://www.hermes.com/knowledgebase.owl#Product"/>
+    <rb:hasActions>
+      <rb:Action rdf:about="http://www.hermes.com/rules.owl#addProduct">
+        <rb:mainClause>
+          <rb:Triple>
+            <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event subject&gt;</rb:object>
+            <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >http://www.hermes.com/knowledgebase.owl#hasProduct</rb:predicate>
+            <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >&lt;event object&gt;</rb:subject>
+          </rb:Triple>
+        </rb:mainClause>
+        <rb:actionType rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >add</rb:actionType>
+      </rb:Action>
+    </rb:hasActions>
+  </rb:Rule>
+  <rb:Triple>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#isCeoOf</rb:predicate>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:object>
+  </rb:Triple>
+  <rb:Triple>
+    <rb:object rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event object&gt;</rb:object>
+    <rb:predicate rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >http://www.hermes.com/knowledgebase.owl#hasCompetitor</rb:predicate>
+    <rb:subject rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >&lt;event subject&gt;</rb:subject>
+  </rb:Triple>
+  <rb:Rule rdf:about="http://www.hermes.com/rules.owl#buy-rule">
+    <rb:hasActions rdf:resource="http://www.hermes.com/rules.owl#removeCompetesWith"/>
+    <rb:ruleRelation rdf:resource="http://www.hermes.com/knowledgebase.owl#Buys"/>
+    <rb:ruleObject rdf:resource="http://www.hermes.com/knowledgebase.owl#Company"/>
+    <rb:ruleSubject rdf:resource="http://www.hermes.com/knowledgebase.owl#Company"/>
+  </rb:Rule>
+</rdf:RDF>

@@ -1,0 +1,162 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:kb="http://www.jborsje.nl/hermes/knowledgebase.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://www.jborsje.nl/hermes/news.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <owl:Ontology rdf:about="http://www.jborsje.nl/hermes/news.owl">
+    <owl:imports rdf:resource="http://www.jborsje.nl/hermes/knowledgebase.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://www.jborsje.nl/hermes/news.owl#Relation"/>
+  <owl:Class rdf:about="http://www.jborsje.nl/hermes/news.owl#News"/>
+  <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#isMember">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#hasMember"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#hasProduct">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#isProducedBy"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#relation">
+    <rdfs:range rdf:resource="http://www.jborsje.nl/hermes/news.owl#Relation"/>
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#News"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#newsitem"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#isProducedBy">
+    <owl:inverseOf rdf:resource="http://www.jborsje.nl/hermes/knowledgebase.owl#hasProduct"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#relatedItem">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#relatedTo"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/knowledgebase.owl#Concept"/>
+    <rdfs:range rdf:resource="http://www.jborsje.nl/hermes/news.owl#Relation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#hasMember">
+    <owl:inverseOf rdf:resource="http://www.jborsje.nl/hermes/knowledgebase.owl#isMember"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#relatedTo">
+    <rdfs:range rdf:resource="http://www.jborsje.nl/hermes/knowledgebase.owl#Concept"/>
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#Relation"/>
+    <owl:inverseOf rdf:resource="http://www.jborsje.nl/hermes/news.owl#relatedItem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#newsitem">
+    <rdfs:range rdf:resource="http://www.jborsje.nl/hermes/news.owl#News"/>
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#Relation"/>
+    <owl:inverseOf rdf:resource="http://www.jborsje.nl/hermes/news.owl#relation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#hasCEO">
+    <owl:inverseOf>
+      <owl:InverseFunctionalProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#isCeoOf"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#timesFound">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#Relation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#textItem">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#numberOfConcepts">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#hit">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#textItem">
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#News"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#wordnetSense">
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#publisher">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#News"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#synonym">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#ignore">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#link">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#News"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#title">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#News"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#link">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#time">
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#News"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#time">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#hit">
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#Relation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.jborsje.nl/hermes/news.owl#processedByRuleEngine">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.jborsje.nl/hermes/news.owl#News"/>
+  </owl:DatatypeProperty>
+  <owl:SymmetricProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#hasPartner"
+     rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty">
+    <owl:inverseOf rdf:resource="http://www.jborsje.nl/hermes/knowledgebase.owl#hasPartner"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#hasCompetitor"
+     rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty">
+    <owl:inverseOf rdf:resource="http://www.jborsje.nl/hermes/knowledgebase.owl#hasCompetitor"/>
+  </owl:SymmetricProperty>
+  <owl:FunctionalProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#wordnet"
+     rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#publisher"
+     rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#name"
+     rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Class"/>
+          <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#timesFound"
+     rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#image"
+     rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#title"
+     rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="http://www.jborsje.nl/hermes/knowledgebase.owl#isCeoOf"
+     rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty">
+    <owl:inverseOf rdf:resource="http://www.jborsje.nl/hermes/knowledgebase.owl#hasCEO"/>
+  </owl:InverseFunctionalProperty>
+</rdf:RDF>

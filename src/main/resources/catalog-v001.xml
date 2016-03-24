@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog id="XML Catalog File (see http://www.oasis-open.org/committees/entity/spec-2001-08-06.html) - Created By Protege 4" prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=D:\Documents\Hermes\branches\v2.3\Hermes\data, recursive=true, Auto-Update=true" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1288972500570" name="http://www.owl-ontologies.com/unnamed.owl" uri="gate/Ontology_Tools/resources/demo.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1288972500570" name="http://www.eur.nl/hermes/rules.owl" uri="rules_old.owl"/>
+    </group>
+</catalog>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Annotations>
+  <NewsItem Uri="http://www.hermes.com/news.owl#n12724357d20-1946152468">
+    <Annotation>
+      <Subject EndOffset="10181" StartOffset="10174" Value="Goldman"/>
+      <Object EndOffset="10354" StartOffset="10348" Value="A.I.G."/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+    <Annotation>
+      <Subject EndOffset="10193" StartOffset="10187" Value="A.I.G."/>
+      <Object EndOffset="10354" StartOffset="10348" Value="A.I.G."/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+    <Annotation>
+      <Subject EndOffset="10300" StartOffset="10293" Value="Goldman"/>
+      <Object EndOffset="10354" StartOffset="10348" Value="A.I.G."/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+    <Annotation>
+      <Subject EndOffset="6760" StartOffset="6754" Value="A.I.G."/>
+      <Object EndOffset="6797" StartOffset="6791" Value="A.I.G."/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+  </NewsItem>
+  <NewsItem Uri="http://www.hermes.com/news.owl#n1272435f227905519710">
+    <Annotation>
+      <Subject EndOffset="46" StartOffset="41" Value="Nokia"/>
+      <Object EndOffset="189" StartOffset="183" Value="Google"/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+    <Annotation>
+      <Subject EndOffset="56" StartOffset="51" Value="Intel"/>
+      <Object EndOffset="189" StartOffset="183" Value="Google"/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+  </NewsItem>
+  <NewsItem Uri="http://www.hermes.com/news.owl#n12730a27af8308251036">
+    <Annotation>
+      <Subject EndOffset="1790" StartOffset="1781" Value="Microsoft"/>
+      <Object EndOffset="1928" StartOffset="1919" Value="Microsoft"/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+    <Annotation>
+      <Subject EndOffset="1831" StartOffset="1825" Value="Google"/>
+      <Object EndOffset="1928" StartOffset="1919" Value="Microsoft"/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+    <Annotation>
+      <Subject EndOffset="1857" StartOffset="1849" Value="DocVerse"/>
+      <Object EndOffset="1928" StartOffset="1919" Value="Microsoft"/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+  </NewsItem>
+  <NewsItem Uri="http://www.hermes.com/news.owl#n12736c7ebc0808589945">
+    <Annotation>
+      <Subject EndOffset="4951" StartOffset="4943" Value="Facebook"/>
+      <Object EndOffset="5029" StartOffset="5021" Value="Facebook"/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+  </NewsItem>
+  <NewsItem Uri="http://www.hermes.com/news.owl#n1274182a000823785239">
+    <Annotation>
+      <Subject EndOffset="1327" StartOffset="1319" Value="Northrop"/>
+      <Object EndOffset="1421" StartOffset="1415" Value="Airbus"/>
+      <ClassTriple Object="http://www.hermes.com/knowledgebase.owl#Company" Relation="http://www.hermes.com/knowledgebase.owl#hasPartner" Subject="http://www.hermes.com/knowledgebase.owl#Company"/>
+    </Annotation>
+  </NewsItem>
+</Annotations>
