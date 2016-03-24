@@ -1,5 +1,5 @@
-org/archdesc/StandAloneAnnie$SortedAnnotationList.class
-org/archdesc/AnnieApp.class
 org/archdesc/StandAloneAnnie.class
-org/archdesc/BatchProcessApp.class
+org/archdesc/StandAloneAnnie$SortedAnnotationList.class
 org/archdesc/DemoTransducer.class
+org/archdesc/BatchProcessApp.class
+org/archdesc/AnnieApp.class
