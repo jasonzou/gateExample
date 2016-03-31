@@ -8,7 +8,7 @@
     <artifactId>gateApp01</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <description>GATE Demo App</description>
+    <description>GATE/Cleartk Demo App</description>
     <build>
         <plugins>
             <plugin>
@@ -47,8 +47,21 @@
                 </executions>
             </plugin>
         </plugins>
-    </build>
-    <dependencies>
+</build>
+<properties>
+	  <cleartk.version>2.0.0</cleartk.version>
+  </properties>
+  <dependencies>
+    <dependency>
+        <groupId>org.cleartk</groupId>
+	<artifactId>cleartk-ml</artifactId>
+        <version>${cleartk.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.cleartk</groupId>
+        <artifactId>cleartk-timeml</artifactId>
+        <version>${cleartk.version}</version>
+    </dependency>
         <dependency>
             <groupId>uk.ac.gate</groupId>
             <artifactId>gate-core</artifactId>
